@@ -105,10 +105,10 @@ const lolkey = '78bd89cd7b4d6205e3e18061'
 			const imagebb = "https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg"
 
 let blocked = []
-limitawal = "100" 
+limitawal = "10" 
 namabot = setting.botname
-owner_name = setting.ownername
-owner_number = setting.ownerNumber
+owner_name = Wabot
+owner_number = 62895342978510
 gamewaktu = "3" 
 numbernye = "0" 
 simbolnya = "•"
@@ -384,7 +384,7 @@ module.exports = Zeeone = async (Zeeone, Ofc) => {
 			let sender = Ofc.key.fromMe ? Zeeone.user.jid : Ofc.key.remoteJid.endsWith('@g.us') ? Ofc.participant : Ofc.key.remoteJid
 			const itsMe = sender == botNumber ? true : false
 			try {
-					pp_userb = await Zeeone.getProfilePicture(sender)
+					pp_userb = await Pena.getProfilePicture(sender)
 				} catch {
 					pp_userb = 'https://i.ibb.co/rvsVF3r/5012fbb87660.png'
 				}
@@ -392,9 +392,9 @@ module.exports = Zeeone = async (Zeeone, Ofc) => {
 			const isSelf = Ofc.key.fromMe ? true : false
 			const senderNumber = sender.split("@")[0]
 			const totalchat = await Zeeone.chats.all()
-			const ownerNumber = [`${owner_number}@s.whatsapp.net`]
+			const ownerNumber = [`${62895342978510}@s.whatsapp.net`]
 			const unread = await Zeeone.loadAllUnreadMessages()
-			const conts = Ofc.key.fromMe ? Zeeone.user.jid : Zeeone.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+			const conts = Ofc.key.fromMe ? Pena.user.jid : Pena.contacts[sender] || { notify: jid.replace(/@.+/, '') }
 			const orang = sender.split("@")[0]
 			const me = Zeeone.user
 			const nomerbot = me.jid.split("@")[0]
@@ -459,7 +459,7 @@ module.exports = Zeeone = async (Zeeone, Ofc) => {
 •> 25k / BULAN (PREMIUM)
 Isi sendiri
 
-Minat? Pm wa.me/${owner_number}`,
+Minat? Pm wa.me/${62895342978510}`,
 					ban: 'Maaf Lord Kamu Sudah Di Banned!',
 					error: 'Error Lord',
 					only: {
@@ -475,8 +475,8 @@ Minat? Pm wa.me/${owner_number}`,
 			selectedButton = (type == 'buttonsResponseMessage') ? Ofc.message.buttonsResponseMessage.selectedButtonId : ''
 			responseButton = (type == 'listResponseMessage') ? Ofc.message.listResponseMessage.title : ''
 			const listmsg = (from, title, desc, button, futer, list) => {
-				let po = Zeeone.prepareMessageFromContent(from, {"listMessage": {"title": title,"description": desc,"buttonText": button,"footerText": futer+'\nBot Created By ZeeoneOfc',"listType": "SINGLE_SELECT","sections": list}}, {})
-				return Zeeone.relayWAMessage(po, {waitForAck: true})
+				let po = Pena.prepareMessageFromContent(from, {"listMessage": {"title": title,"description": desc,"buttonText": button,"footerText": futer+'\nBot Created By PenaBot',"listType": "SINGLE_SELECT","sections": list}}, {})
+				return Pena.relayWAMessage(po, {waitForAck: true})
 				}
 			const isUrl = (url) => {
 				return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
@@ -485,10 +485,10 @@ Minat? Pm wa.me/${owner_number}`,
 				return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 				}
 			const reply = (teks) => {
-				return Zeeone.sendMessage(from, teks, text, {quoted: Ofc, contextInfo: { mentionedJid: parseMention(teks) }})
+				return Pena.sendMessage(from, teks, text, {quoted: Ofc, contextInfo: { mentionedJid: parseMention(teks) }})
 				}
 			const sendImage = (teks) => {
-				Zeeone.sendMessage(from, teks, image, {quoted:Ofc})
+				Pena.sendMessage(from, teks, image, {quoted:Ofc})
 				 }
 			 function randomNomor(angka){
 				 return Math.floor(Math.random() * angka) + 1
@@ -500,10 +500,10 @@ Minat? Pm wa.me/${owner_number}`,
 				return Math.floor(angka)
 				}
 			const sendMess = (hehe, teks) => {
-				Zeeone.sendMessage(hehe, teks, text)
+				Pena.sendMessage(hehe, teks, text)
 				}
 			const mentions = (teks, memberr, id) => {
-				(id == null || id == undefined || id == false) ? Zeeone.sendMessage(from, {text: teks.trim(), jpegThumbnail: thumbnail}, extendedText, { sendEphemeral: true, contextInfo: { "mentionedJid": memberr } }) : Zeeone.sendMessage(from, {text: teks.trim(), jpegThumbnail: thumbnail}, extendedText, { sendEphemeral: true, quoted: Ofc, contextInfo: { "mentionedJid": memberr } })
+				(id == null || id == undefined || id == false) ? Zeeone.sendMessage(from, {text: teks.trim(), jpegThumbnail: thumbnail}, extendedText, { sendEphemeral: true, contextInfo: { "mentionedJid": memberr } }) : Pena.sendMessage(from, {text: teks.trim(), jpegThumbnail: thumbnail}, extendedText, { sendEphemeral: true, quoted: Ofc, contextInfo: { "mentionedJid": memberr } })
 				}
 			const getUserrRandomId = () => {
 				return _user[Math.floor(Math.random() * _user.length)].id
@@ -515,7 +515,7 @@ Minat? Pm wa.me/${owner_number}`,
 				return '```' + string + '```'
 				}   
 			const hideTag = async function(from, text){
-				let anu = await Zeeone.groupMetadata(from)
+				let anu = await Pena.groupMetadata(from)
 				let members = anu.participants
 				let ane = []
 				for (let i of members){
@@ -537,12 +537,12 @@ Minat? Pm wa.me/${owner_number}`,
 				}
 		const promoteAdmin = async function(to, target=[]){
 				if(!target.length > 0) { return  reply("No target..") }
-				let g = await Zeeone.groupMetadata(to)
+				let g = await Pena.groupMetadata(to)
 				let owner = g.owner.replace("c.us","s.whatsapp.net")
-				let me = Zeeone.user.jid
+				let me = Pena.user.jid
 				for (i of target){
 					if (!i.includes(me) && !i.includes(owner)){
-						const res = await Zeeone.groupMakeAdmin(to, [i])
+						const res = await Pena.groupMakeAdmin(to, [i])
 						 }else{
 							reply("NOT PREMITED")
 						}
@@ -562,27 +562,27 @@ Minat? Pm wa.me/${owner_number}`,
 						}
 					}
 			const kickMember = async(id, target = []) => {
-					let group = await Zeeone.groupMetadata(id)
+					let group = await Pena.groupMetadata(id)
 					let owner = group.owner.replace("c.us", "s.whatsapp.net")
 					let me = Zeeone.user.jid
 					for (i of target) {
 						if (!i.includes(me) && !i.includes(owner)) {
-							await Zeeone.groupRemove(to, [i])
+							await Pena.groupRemove(to, [i])
 							} else {
-								await Zeeone.sendMessage(id, "Not Premited!", "conversation")
+								await Pena.sendMessage(id, "Not Premited!", "conversation")
 							}
 						}
 					}
 			const kick = function(from, orangnya){
 				for (let i of orangnya){
-					Zeeone.groupRemove(from, [i])
+					Pena.groupRemove(from, [i])
 				}
 			}
 			const add = function(from, orangnya){
-					Zeeone.groupAdd(from, orangnya)
+					Pena.groupAdd(from, orangnya)
 				}
 			const sendKontak = (from, nomor, nama, org = "") => {
-				const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:' + org + '\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
+				const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + BAPAKNYA PENA + '\n' + 'ORG:' + org + '\n' + 'TEL;type=CELL;type=VOICE;waid=' + 62895342978510 + ':+' + 62895342978510 + '\n' + 'END:VCARD'
 				Zeeone.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact, {quoted: Ofc})
 			}
 			const hideTagKontak = async(from, nomor, nama) => {
@@ -874,7 +874,7 @@ Minat? Pm wa.me/${owner_number}`,
 								},
 								type: 1,
 								}]);
-								Zeeone.sendMessage(`${owner_number}@s.whatsapp.net`, `*「 SEWA EXPIRED 」* \n\nHai Owner! Waktu Sewa *${sewa[position].id}*, Di Group *${groupName}* Telah Berakhir!`, MessageType.text)
+								Zeeone.sendMessage(`${62895342978510}@s.whatsapp.net`, `*「 SEWA EXPIRED 」* \n\nHai Owner! Waktu Sewa *${sewa[position].id}*, Di Group *${groupName}* Telah Berakhir!`, MessageType.text)
 								Zeeone.groupLeave(sewa[position].id)
 							sewa.splice(position, 1)
 						fs.writeFileSync('./database/sewa.json', JSON.stringify(sewa))
